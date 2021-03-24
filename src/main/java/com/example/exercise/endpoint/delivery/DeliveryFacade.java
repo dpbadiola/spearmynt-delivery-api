@@ -17,15 +17,17 @@ public class DeliveryFacade {
 	private final CostService costService;
 
 	public DeliveryResponse computeCost(DeliveryRequest request) {
-		Pair<Rule, BigDecimal> computation = costService.compute(request.getWeight(), request.getHeight(),
-		                                                         request.getWidth(), request.getLength());
+		Pair<Rule, BigDecimal> computation = costService.compute(BigDecimal.valueOf(request.getWeight()),
+		                                                         BigDecimal.valueOf(request.getHeight()),
+		                                                         BigDecimal.valueOf(request.getWidth()),
+		                                                         BigDecimal.valueOf(request.getLength()));
 
 		DeliveryResponse response = new DeliveryResponse();
 		response.setPriority(computation.getLeft().getPriority());
-		response.setRuleName(computation.getLeft().getRuleName());
+		response.setRuleName(computation.getLeft().getName());
 		response.setCost(computation.getRight());
 
-		return new DeliveryResponse(); // TODO:
+		return response;
 	}
 
 }

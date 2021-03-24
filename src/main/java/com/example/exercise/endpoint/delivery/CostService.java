@@ -16,14 +16,9 @@ public class CostService {
 
 	private final CostRuleSettings settings;
 
-	// TODO: JavaDoc
-	// TODO: Unit test
-	public Pair<Rule, BigDecimal> compute(double weight, double height, double width, double length) {
-		double volume = height * width * length;
-
+	public Pair<Rule, BigDecimal> compute(BigDecimal weight, BigDecimal height, BigDecimal width, BigDecimal length) {
 		ParcelParameters parameters = new ParcelParameters();
 		parameters.setWeight(weight);
-		parameters.setVolume(volume);
 		parameters.setHeight(height);
 		parameters.setWidth(width);
 		parameters.setLength(length);
@@ -34,24 +29,22 @@ public class CostService {
 		return Pair.of(rule.orElse(null), amount);
 	}
 
-	// TODO: JavaDoc
-	// TODO: Unit test
-	private Optional<Rule> getCondition(ParcelParameters parameters) {
+	protected Optional<Rule> getCondition(ParcelParameters parameters) {
 		return settings.getRules().stream()
-				.filter(rule -> {
-					double keyValue = rule.getRuleAmount();
-					double testValue = rule.getRuleCondition().getMapFunction().apply(parameters);
-					return rule.getRulePredicate().getPredicate().test(Pair.of(keyValue, testValue));
-				})
+				.filter(rule -> filterCondition(rule, parameters))
 				.findFirst();
 	}
 
-	// TODO: JavaDoc
-	// TODO: Unit test
+	private boolean filterCondition(Rule rule, ParcelParameters parameters) {
+		BigDecimal keyValue = rule.getValue();
+		BigDecimal testValue = rule.getPredicate().getMapFunction().apply(parameters);
+		return rule.getOperation().test(Pair.of(keyValue, testValue));
+	}
+
 	private BigDecimal computeDeliveryCost(Rule rule, ParcelParameters parameters) {
-		double multiplier = rule.getMultiplier().getMapFunction().apply(parameters);
-		double baseAmount = rule.getAmount();
-		return BigDecimal.valueOf(multiplier * baseAmount);
+		BigDecimal multiplier = rule.getMultiplier().map(parameters);
+		BigDecimal baseAmount = rule.getCost();
+		return multiplier.multiply(baseAmount);
 	}
 
 }
