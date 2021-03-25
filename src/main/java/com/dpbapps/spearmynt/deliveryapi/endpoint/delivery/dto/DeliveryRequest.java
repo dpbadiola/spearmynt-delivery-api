@@ -21,4 +21,6 @@ public class DeliveryRequest {
 	@PositiveOrZero
 	private double length = -1.0D; // cm
 
+	private String voucherCode;
+
 }
