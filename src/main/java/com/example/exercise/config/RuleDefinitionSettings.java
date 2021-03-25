@@ -1,6 +1,6 @@
-package com.example.exercise.endpoint.delivery;
+package com.example.exercise.config;
 
-import com.example.exercise.endpoint.delivery.model.Rule;
+import com.example.exercise.model.RuleDefinition;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,8 +12,8 @@ import java.util.List;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix = "app.delivery")
-public class CostRuleSettings {
+public class RuleDefinitionSettings {
 
-	private List<Rule> rules;
+	private List<RuleDefinition> rules;
 
 }

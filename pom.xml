@@ -21,6 +21,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
+		<caffeine.version>3.0.1</caffeine.version>
 	</properties>
 
 	<dependencies>
@@ -36,6 +37,11 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>${apache.commons.lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+			<version>${caffeine.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

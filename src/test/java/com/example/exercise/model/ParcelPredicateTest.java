@@ -1,5 +1,6 @@
-package com.example.exercise.endpoint.delivery.model;
+package com.example.exercise.model;
 
+import com.example.exercise.endpoint.delivery.model.ParcelParameters;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

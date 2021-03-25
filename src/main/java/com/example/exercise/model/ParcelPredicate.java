@@ -1,5 +1,6 @@
-package com.example.exercise.endpoint.delivery.model;
+package com.example.exercise.model;
 
+import com.example.exercise.endpoint.delivery.model.ParcelParameters;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -26,3 +27,4 @@ public enum ParcelPredicate {
 	}
 
 }
+

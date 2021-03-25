@@ -1,7 +1,9 @@
 package com.example.exercise.endpoint.delivery;
 
 import com.example.exercise.endpoint.delivery.model.ParcelParameters;
-import org.junit.jupiter.api.Assertions;
+import com.example.exercise.model.CostDefinition;
+import com.example.exercise.model.Rule;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,13 +12,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class CostServiceTest {
+public class DeliveryServiceTest {
 
 	@Autowired
-	private CostService costService;
+	private DeliveryService deliveryService;
 
 	private ParcelParameters rejectParcel;
 	private ParcelParameters heavyParcel;
@@ -48,27 +54,37 @@ public class CostServiceTest {
 
 	@Test
 	void testCondition_reject() {
-		Assertions.assertEquals("Reject", costService.getCondition(rejectParcel).get().getName());
+		Optional<Pair<Rule, CostDefinition>> ruleDefinition = deliveryService.getRuleDefinition(rejectParcel);
+		assertTrue(ruleDefinition.isPresent());
+		assertEquals("Reject", ruleDefinition.get().getKey().getName());
 	}
 
 	@Test
 	void testCondition_heavyParcel() {
-		Assertions.assertEquals("Heavy Parcel", costService.getCondition(heavyParcel).get().getName());
+		Optional<Pair<Rule, CostDefinition>> ruleDefinition = deliveryService.getRuleDefinition(heavyParcel);
+		assertTrue(ruleDefinition.isPresent());
+		assertEquals("Heavy Parcel", ruleDefinition.get().getKey().getName());
 	}
 
 	@Test
 	void testCondition_smallParcel() {
-		Assertions.assertEquals("Small Parcel", costService.getCondition(smallParcel).get().getName());
+		Optional<Pair<Rule, CostDefinition>> ruleDefinition = deliveryService.getRuleDefinition(smallParcel);
+		assertTrue(ruleDefinition.isPresent());
+		assertEquals("Small Parcel", ruleDefinition.get().getKey().getName());
 	}
 
 	@Test
 	void testCondition_mediumParcel() {
-		Assertions.assertEquals("Medium Parcel", costService.getCondition(mediumParcel).get().getName());
+		Optional<Pair<Rule, CostDefinition>> ruleDefinition = deliveryService.getRuleDefinition(mediumParcel);
+		assertTrue(ruleDefinition.isPresent());
+		assertEquals("Medium Parcel", ruleDefinition.get().getKey().getName());
 	}
 
 	@Test
 	void testCondition_largeParcel() {
-		Assertions.assertEquals("Large Parcel", costService.getCondition(largeParcel).get().getName());
+		Optional<Pair<Rule, CostDefinition>> ruleDefinition = deliveryService.getRuleDefinition(largeParcel);
+		assertTrue(ruleDefinition.isPresent());
+		assertEquals("Large Parcel", ruleDefinition.get().getKey().getName());
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.example.exercise.endpoint.delivery.model;
+package com.example.exercise.model;
 
 import lombok.Getter;
 import org.apache.commons.lang3.tuple.Pair;

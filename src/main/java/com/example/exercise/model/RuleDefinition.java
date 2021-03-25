@@ -1,4 +1,4 @@
-package com.example.exercise.endpoint.delivery.model;
+package com.example.exercise.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class Rule {
+public class RuleDefinition {
 
 	private long priority;
 	private String name;
