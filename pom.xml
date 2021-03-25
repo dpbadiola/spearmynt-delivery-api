@@ -12,11 +12,11 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.example</groupId>
-	<artifactId>exercise</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>exercise</name>
-	<description>Demo project for Spring Boot</description>
+	<groupId>com.dpbapps.spearmynt</groupId>
+	<artifactId>delivery-api</artifactId>
+	<version>1.0.0</version>
+	<name>SpearMynt - Deliver API</name>
+	<description>SpearMynt - Delivery Cost API Solution</description>
 
 	<properties>
 		<java.version>11</java.version>
