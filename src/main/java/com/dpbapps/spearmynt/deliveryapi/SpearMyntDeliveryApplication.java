@@ -9,20 +9,22 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExerciseApplication implements CommandLineRunner {
+public class SpearMyntDeliveryApplication implements CommandLineRunner {
 
 	private final RuleDefinitionSettings ruleDefinitionSettings;
 	private final RuleDeliveryCache ruleDeliveryCache;
 
-	public ExerciseApplication(RuleDefinitionSettings ruleDefinitionSettings,
-	                           RuleDeliveryCache ruleDeliveryCache) {
+	public SpearMyntDeliveryApplication(RuleDefinitionSettings ruleDefinitionSettings,
+	                                    RuleDeliveryCache ruleDeliveryCache) {
 		this.ruleDefinitionSettings = ruleDefinitionSettings;
 		this.ruleDeliveryCache = ruleDeliveryCache;
 	}
 
 	// TODO: voucher on provided swagger
+	// TODO: setup Swagger on project
+	// TODO: setup health management endpoints
 	public static void main(String[] args) {
-		SpringApplication.run(ExerciseApplication.class, args);
+		SpringApplication.run(SpearMyntDeliveryApplication.class, args);
 	}
 
 	@Override
